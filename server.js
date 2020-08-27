@@ -4,6 +4,10 @@ const bodyParser = require('body-parser')
 const app = express()
 
 
+const userRoute = require('./routes/user')
+const profileRoute = require('./routes/profile')
+
+
 //데이터베이스 연결
 require('./config/database')
 
@@ -14,6 +18,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
 
+app.use('/user', userRoute)
+app.use('/profile', profileRoute)
 
 const port = 1111
 
