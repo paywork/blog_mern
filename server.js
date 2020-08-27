@@ -14,9 +14,9 @@ require('./config/database')
 
 //미들웨어
 app.use(morgan('dev'))
+// body parser
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
-
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/user', userRoute)
 app.use('/profile', profileRoute)
