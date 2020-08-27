@@ -9,34 +9,53 @@ const userModel = require('../models/user')
 // @access Public
 router.post('/signup', (req, res) => {
 
+     // 이메일 유무 체크
+    userModel
+        .findOne({email: req.body.email})
+        .then(user => {
+            if(user) {
+                //이메일 있으면
+                return res.json({
+                    message: "email exists"
+                })
+            } else{
+                //이메일 없으면
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    if(err) {
+                        return res.json({
+                            err: err.message
+                        })
+                    } else {
+                        const newUser = new userModel({
+                            name:  req.body.name,
+                            email: req.body.email,
+                            password: hash
+                        })
 
-     bcrypt.hash(req.body.password, 10, (err, hash) => {
-         if(err) {
-             return res.json({
-                 err: err.message
-             })
-         } else {
-             const newUser = new userModel({
-                 name:  req.body.name,
-                 email: req.body.email,
-                 password: hash
-             })
+                        newUser
+                            .save()
+                            .then(user => {
+                                res.json({
+                                    message: "registered user",
+                                    userInfo: user
+                                })
+                            })
+                            .catch(err => {
+                                res.json({
+                                    message: err.message
+                                })
+                            })
+                    }
+                })
+            }
 
-             newUser
-                 .save()
-                 .then(user => {
-                     res.json({
-                         message: "registered user",
-                         userInfo: user
-                     })
-                 })
-                 .catch(err => {
-                     res.json({
-                         message: err.message
-                     })
-                 })
-         }
-     })
+        })
+        .catch(err => {
+            res.json({
+                err: err.message
+            })
+        })
+
 
 })
 

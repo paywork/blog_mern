@@ -67,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598519319927</updated>
-      <workItem from="1598519321046" duration="3900000" />
+      <workItem from="1598519321046" duration="4306000" />
     </task>
     <servers />
   </component>
@@ -87,5 +87,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="57" y="85" width="840" height="1034" key="search.everywhere.popup" timestamp="1598523904389">
+      <screen x="40" y="23" width="1752" height="1097" />
+    </state>
+    <state x="57" y="85" width="840" height="1034" key="search.everywhere.popup/40.23.1752.1097@40.23.1752.1097" timestamp="1598523904389" />
   </component>
 </project>
